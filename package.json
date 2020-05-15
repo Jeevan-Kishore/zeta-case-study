@@ -1,7 +1,6 @@
 {
   "name": "zeta-case-study",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",

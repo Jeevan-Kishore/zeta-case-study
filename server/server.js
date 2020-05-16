@@ -1,12 +1,7 @@
 const express = require("express");
+const {getAnimal}  = require("./image-handler");
+
 const app = express();
-
-const dreams = [
-    "Find and count some sheep",
-    "Climb a really tall mountain",
-    "Wash the dishes"
-];
-
 
 app.use(express.static("build"));
 
@@ -14,9 +9,11 @@ app.get("/", (request, response) => {
     response.sendFile(__dirname + "/build/index.html");
 });
 
-app.get("/dreams", (request, response) => {
-    response.json(dreams);
+app.get("/get-animal/:animal", async (request, response) => {
+    const data = await getAnimal(request.params);
+    await response.json(data);
 });
+
 
 const listener = app.listen(process.env.PORT, () => {
     console.log("Your app is listening on port " + listener.address().port);

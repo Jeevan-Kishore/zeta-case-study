@@ -16,6 +16,7 @@ export const ImagePagination = props => {
         const data = await getImageFromSource(currentAnimal);
         setImageRepo([...imageRepo, ...[data]]);
     };
+
     const setAnimal = event => {
         const animalName = event.target.getAttribute("data-animal");
         setImageRepo([]);
@@ -27,7 +28,7 @@ export const ImagePagination = props => {
         if(currentAnimal && entry && entry.isIntersecting){
             loadAnimal(currentAnimal);
         }
-    }, [currentAnimal, entry, loadAnimal]);
+    }, [currentAnimal, entry]);
 
 
     const renderAnimals = () => (

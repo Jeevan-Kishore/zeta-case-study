@@ -16,7 +16,7 @@ export const ImageLoader = ({data = {}, width, height}) => {
            </video>;
        }
        return <>
-           <img style={{visibility: isLoading ? "hidden": "visible"}} onLoad={chooseLoader} width={200} height={200} src={url}/>
+           <img alt="" style={{visibility: isLoading ? "hidden": "visible"}} onLoad={chooseLoader} width={200} height={200} src={url}/>
            {isLoading && <LoadingIndicator color={"blue"} />}
        </>;
     };

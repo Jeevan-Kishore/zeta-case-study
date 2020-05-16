@@ -8,14 +8,11 @@ export const ImagePagination = props => {
     const [currentAnimal, setCurrentAnimal] = useState(null);
     const [imageRepo, setImageRepo] = useState([]);
 
-    const getImageList = () => imageRepo.map((data, index) => <div key={`${data.url}-${index}`}><ImageLoader data={data} /> </div>);
+    const loadedImages = useRef({});
+
+    const getImageList = () => imageRepo.map((data, index) => <li key={`${data.url}-${index}`}><ImageLoader data={data} /> </li>);
     const getImageFromSource = animal => fetch(`/get-animal/${animal}`).then(res => res.json());
 
-
-    const loadAnimal = async currentAnimal => {
-        const data = await getImageFromSource(currentAnimal);
-        setImageRepo([...imageRepo, ...[data]]);
-    };
 
     const setAnimal = event => {
         const animalName = event.target.getAttribute("data-animal");
@@ -25,10 +22,21 @@ export const ImagePagination = props => {
 
 
     useEffect(() => {
+        const loadAnimal = async () => {
+            const data = await getImageFromSource(currentAnimal);
+            if(!loadedImages?.current[data.url]){
+                setImageRepo([...imageRepo, ...[data]]);
+                loadedImages.current[data.url] = true;
+                return true;
+            }
+            /* Break if no uniques appear */
+            return loadAnimal();
+        };
+
         if(currentAnimal && entry && entry.isIntersecting){
-            loadAnimal(currentAnimal);
+            loadAnimal();
         }
-    }, [currentAnimal, entry]);
+    }, [currentAnimal, entry, imageRepo]);
 
 
     const renderAnimals = () => (
@@ -36,7 +44,7 @@ export const ImagePagination = props => {
             <button data-animal="dog" onClick={setAnimal}>Load Dog</button>
             <button data-animal="cat" onClick={setAnimal}>Load Cat</button>
             <button data-animal="wolf" onClick={setAnimal}>Load Wolf</button>
-            <div>{getImageList()}</div>
+            <ul>{getImageList()}</ul>
             <div ref={imageContainerRef} />
         </div>
     );

@@ -17,7 +17,7 @@ export const ImageLoader = ({data = {}, width, height}) => {
            </video>;
        }
        return <>
-           <img alt="" className={styles.itemContainer} onLoad={chooseLoader} src={url}/>
+           <img alt="" onError={chooseLoader} className={styles.itemContainer} onLoad={chooseLoader} src={url}/>
            {isLoading && <LoadingIndicator color={"blue"} />}
        </>;
     };

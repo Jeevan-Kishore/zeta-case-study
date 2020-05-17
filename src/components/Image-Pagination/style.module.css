@@ -23,10 +23,10 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #4267b2;
+    background-color: var(--header-bg-color);
     height: 40px;
     display: flex;
-    color: #fff;
+    color: var(--header-font-color);
     align-items: center;
     list-style-type: none;
 }

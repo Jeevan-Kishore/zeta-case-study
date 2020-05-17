@@ -47,7 +47,7 @@ export const ImagePagination = props => {
             <button data-animal="cat" onClick={setAnimal}>Load Cat</button>
             <button data-animal="wolf" onClick={setAnimal}>Load Wolf</button>
             <ul className={`${styles.resetMargin} ${styles.listContainer}`}>{getImageList()}</ul>
-            <div ref={imageContainerRef} />
+            <div ref={imageContainerRef} className={styles.intersector} />
         </div>
     );
 

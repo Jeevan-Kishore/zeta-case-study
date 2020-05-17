@@ -43,9 +43,11 @@ export const ImagePagination = props => {
 
     const renderAnimals = () => (
         <div>
-            <button data-animal="dog" onClick={setAnimal}>Load Dog</button>
-            <button data-animal="cat" onClick={setAnimal}>Load Cat</button>
-            <button data-animal="wolf" onClick={setAnimal}>Load Wolf</button>
+            <ul className={`${styles.resetMargin} ${styles.headerOptions}`}>
+                <li className={styles.headerItems} data-animal="dog" onClick={setAnimal}>Load Dog</li>
+                <li className={styles.headerItems} data-animal="cat" onClick={setAnimal}>Load Cat</li>
+                <li className={styles.headerItems} data-animal="wolf" onClick={setAnimal}>Load Wolf</li>
+            </ul>
             <ul className={`${styles.resetMargin} ${styles.listContainer}`}>{getImageList()}</ul>
             <div ref={imageContainerRef} className={styles.intersector} />
         </div>

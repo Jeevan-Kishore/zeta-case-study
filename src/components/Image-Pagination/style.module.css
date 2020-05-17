@@ -11,10 +11,27 @@
 }
 
 .listItem{
-    margin: 10px;
+    margin: 5px;
 }
 
 .intersector{
     width: 100%;
     height: 100px;
+}
+
+.headerOptions {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #4267b2;
+    height: 40px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    list-style-type: none;
+}
+
+.headerItems {
+    padding-left: 20px;
+    cursor: pointer;
 }

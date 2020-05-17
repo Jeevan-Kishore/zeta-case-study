@@ -12,7 +12,7 @@ Infinite categorized pagination
 
 ## Demo
 
-This project is deployed to (glitch)[]
+This project is deployed to [glitch](https://alike-adorable-dry.glitch.me)
 
 ## Dev setup
 

@@ -4,7 +4,9 @@ Infinite categorized pagination
 ## Preface
 
 > Node server handles API calls for schema consistency and CORS
+
 > Project is backed by React + CSS modules
+
 > Infinite pagination is implemented using Intersection Observer
 
 

@@ -1,0 +1,15 @@
+.resetMargin{
+    margin: 0;
+    padding: 0;
+}
+
+.listContainer {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.listItem{
+    margin: 10px;
+}

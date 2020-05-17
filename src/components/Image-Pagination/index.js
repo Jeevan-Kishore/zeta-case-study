@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useIntersector} from "../../custom-hooks/use-intersector";
 import {ImageLoader} from "../Image-loader";
+import styles from "./style.module.css";
 
 export const ImagePagination = props => {
     const imageContainerRef = useRef(null);
@@ -10,13 +11,14 @@ export const ImagePagination = props => {
 
     const loadedImages = useRef({});
 
-    const getImageList = () => imageRepo.map((data, index) => <li key={`${data.url}-${index}`}><ImageLoader data={data} /> </li>);
+    const getImageList = () => imageRepo.map((data, index) => <li className={styles.listItem} key={`${data.url}-${index}`}><ImageLoader data={data} /> </li>);
     const getImageFromSource = animal => fetch(`/get-animal/${animal}`).then(res => res.json());
 
 
     const setAnimal = event => {
         const animalName = event.target.getAttribute("data-animal");
         setImageRepo([]);
+        loadedImages.current = {};
         setCurrentAnimal(animalName);
     };
 
@@ -29,7 +31,7 @@ export const ImagePagination = props => {
                 loadedImages.current[data.url] = true;
                 return true;
             }
-            /* Break if no uniques appear */
+            /* TODO: Break if no uniques appear */
             return loadAnimal();
         };
 
@@ -44,7 +46,7 @@ export const ImagePagination = props => {
             <button data-animal="dog" onClick={setAnimal}>Load Dog</button>
             <button data-animal="cat" onClick={setAnimal}>Load Cat</button>
             <button data-animal="wolf" onClick={setAnimal}>Load Wolf</button>
-            <ul>{getImageList()}</ul>
+            <ul className={`${styles.resetMargin} ${styles.listContainer}`}>{getImageList()}</ul>
             <div ref={imageContainerRef} />
         </div>
     );
@@ -54,7 +56,7 @@ export const ImagePagination = props => {
     }, [setReference, entry]);
 
 
-    return <div style={{width: "100%"}}>
+    return <div>
         {renderAnimals()}
     </div>
 };

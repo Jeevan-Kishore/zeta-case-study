@@ -17,7 +17,7 @@ export const useIntersector = incomingRef => {
         /* eslint-disable no-unused-expressions */
         observer.current = new window.IntersectionObserver(intersectionCallback, {
             rootMargin: '0px',
-            threshold: 1.0
+            threshold: 0.5
         });
         reference && observer?.current?.observe(reference);
         return () => {

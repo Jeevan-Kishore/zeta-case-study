@@ -9,6 +9,7 @@ Infinite categorized pagination
 
 > Infinite pagination is implemented using Intersection Observer
 
+> Node talks to dev server via proxy to port 3000
 
 ## Demo
 
